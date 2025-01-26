@@ -10,7 +10,7 @@ class MyRequests(BaseHTTPRequestHandler):
 
     def do_GET(self):
         """Метод для обработки входящих GET-запросов"""
-        html_dir = Path("C:/Users/Alena/my_1/the_basics_of_layout/html")
+        html_dir = Path(__file__).parent.joinpath('html')
         file_path = html_dir / "contacts_page.html"
 
         if file_path.exists():
@@ -29,7 +29,3 @@ def run(server_class=HTTPServer, handler_class=MyRequests, port=serverPort):
     httpd = server_class(server_address, handler_class)
     print(f'Serving on port {port}')
     httpd.serve_forever()
-
-
-if __name__ == "__main__":
-    run()
